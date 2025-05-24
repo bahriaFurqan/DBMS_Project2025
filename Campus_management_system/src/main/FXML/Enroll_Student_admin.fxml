@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="653.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="task.dbms_project.EnrollStudentAdminController">
+    <children>
+        <AnchorPane layoutY="3.0" prefHeight="649.0" prefWidth="218.0" style="-fx-background-color: #227f9a;">
+            <children>
+                <Button fx:id="backbtn" layoutX="74.0" layoutY="460.0" mnemonicParsing="false" onAction="#back_handler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Back" />
+
+                <Line endX="100.0" layoutX="111.0" layoutY="212.0" startX="-100.0" />
+                <Label layoutX="15.0" layoutY="179.0" text="Functionality" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="Add_btn" layoutX="74.0" layoutY="250.0" mnemonicParsing="false" onAction="#Add_handler" prefHeight="26.0" prefWidth="69.0" style="-fx-background-radius: 10;" text="Add" />
+                <Button fx:id="Removebtn" layoutX="74.0" layoutY="320.0" mnemonicParsing="false" onAction="#Remove_handler" prefHeight="26.0" prefWidth="69.0" style="-fx-background-radius: 10;" text="Remove" />
+                <Button fx:id="Editbtn" layoutX="74.0" layoutY="390.0" mnemonicParsing="false" onAction="#Edit_handler" prefHeight="26.0" prefWidth="69.0" style="-fx-background-radius: 10;" text="Edit" />
+                <Text layoutX="51.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Courses" wrappingWidth="119.78631591796875">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+        <TableView fx:id="tableViewdoctors" layoutX="218.0" layoutY="3.0" prefHeight="327.0" prefWidth="824.0">
+            <columns>
+                <TableColumn fx:id="id_Column" minWidth="1.60003662109375" prefWidth="95.19999694824219" text="Enrollment id" />
+                <TableColumn fx:id="Username_Column" prefWidth="111.2000732421875" text="Student id" />
+                <TableColumn fx:id="name_Column" minWidth="1.60003662109375" prefWidth="97.60003662109375" text="Course name" />
+                <TableColumn fx:id="ContactNo_Column" minWidth="1.60003662109375" prefWidth="284.79998779296875" text="Enrollment date" />
+                <TableColumn fx:id="Email_Column" minWidth="1.60003662109375" prefWidth="236.0" text="Status" />
+
+            </columns>
+        </TableView>
+        <TextField fx:id="Student_id_field" layoutX="425.0" layoutY="369.0" promptText="Course" text="Student id" />
+        <Text layoutX="275.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Student id :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="253.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Course name :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="273.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="302.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Status :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="Status_Combo" layoutX="424.0" layoutY="466.0" prefWidth="150.0" promptText="Status" />
+      <ComboBox fx:id="Course_combo" layoutX="424.0" layoutY="419.0" prefWidth="150.0" promptText="Course name" />
+    </children>
+</AnchorPane>

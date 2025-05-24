@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="653.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="task.dbms_project.ExamAdminController">
+    <children>
+        <!-- Sidebar -->
+        <AnchorPane layoutX="1.0" layoutY="2.0" prefHeight="649.0" prefWidth="218.0" style="-fx-background-color: #227f9a;">
+            <children>
+                <Button fx:id="backbtn" layoutX="73.0" layoutY="503.0" mnemonicParsing="false" onAction="#back_handler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Back" />
+                <Label layoutX="15.0" layoutY="179.0" text="Functionality" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="searchbtn" layoutX="74.0" layoutY="438.0" mnemonicParsing="false" onAction="#searchHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Search" />
+                <Button fx:id="editbtn" layoutX="73.0" layoutY="393.0" mnemonicParsing="false" onAction="#editHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Edit" />
+                <Button fx:id="Addbtn" layoutX="78.0" layoutY="298.0" mnemonicParsing="false" onAction="#addHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Add" />
+            <Button fx:id="Removebtn" layoutX="73.0" layoutY="356.0" mnemonicParsing="false" onAction="#RemoveHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Remove" />
+            <Button fx:id="markresultbtn" layoutX="78.0" layoutY="252.0" mnemonicParsing="false" onAction="#markresulthandler" prefHeight="26.0" prefWidth="83.0" style="-fx-background-radius: 10;" text="Mark Result" />
+            </children>
+        </AnchorPane>
+
+        <!-- TableView for Attendance -->
+        <TableView fx:id="attendanceTable" layoutX="220.0" prefHeight="370.0" prefWidth="816.0">
+            <columns>
+                <TableColumn fx:id="ExamidColumn" prefWidth="90.39997863769531" text="Exam id" />
+                <TableColumn fx:id="Coursenamecolumn" prefWidth="96.00003051757812" text="Course Name" />
+                <TableColumn fx:id="teacherNameColumn" prefWidth="104.0" text="Teacher Name" />
+                <TableColumn fx:id="Examnamecolumn" prefWidth="102.39996337890625" text="Exam type" />
+                <TableColumn fx:id="ExamdatesColumn" prefWidth="101.60003662109375" text="Exam date" />
+                <TableColumn fx:id="examstartcolumn" prefWidth="112.0" text="Exam Start" />
+            <TableColumn fx:id="Durationcolumn" prefWidth="103.199951171875" text="Duration" />
+            <TableColumn fx:id="locationcolumn1" prefWidth="106.39996337890625" text="Location" />
+            </columns>
+        </TableView>
+
+        <!-- Controls for Timetable Selection -->
+        <Text layoutX="252.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Course name :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+
+        <Text layoutX="245.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Teacher name :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="Courseid_Combo" layoutX="425.0" layoutY="396.0" prefWidth="150.0" promptText="Name" />
+
+        <Text layoutX="243.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Exam Type :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="examtype_Combo" layoutX="425.0" layoutY="484.0" prefWidth="150.0" promptText="type" />
+
+        <Text layoutX="650.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Duration :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+      <ComboBox fx:id="Teacherid_Combo" layoutX="425.0" layoutY="438.0" prefWidth="150.0" promptText="Name" />
+      <Text layoutX="253.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Exam Date :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="253.0" layoutY="593.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Exam Start :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="650.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Location :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="Examdate" layoutX="413.0" layoutY="533.0" />
+      <ComboBox fx:id="Duration_Combo" layoutX="795.0" layoutY="397.0" prefWidth="150.0" promptText="Duration" />
+      <ComboBox fx:id="Location_Combo" layoutX="795.0" layoutY="438.0" prefWidth="150.0" promptText="Location" />
+      <ComboBox fx:id="examstart_Combo" layoutX="413.0" layoutY="573.0" prefWidth="150.0" promptText="Start time" />
+    </children>
+</AnchorPane>
