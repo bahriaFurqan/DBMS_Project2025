@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="653.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="task.dbms_project.MarkAssignmentResultController">
+    <children>
+        <!-- Sidebar -->
+        <AnchorPane layoutX="1.0" layoutY="2.0" prefHeight="649.0" prefWidth="218.0" style="-fx-background-color: #227f9a;">
+            <children>
+                <Button fx:id="backbtn" layoutX="73.0" layoutY="503.0" mnemonicParsing="false" onAction="#back_handler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Back" />
+                <Label layoutX="15.0" layoutY="179.0" text="Functionality" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="searchbtn" layoutX="74.0" layoutY="438.0" mnemonicParsing="false" onAction="#searchHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Search" />
+                <Button fx:id="editbtn" layoutX="73.0" layoutY="393.0" mnemonicParsing="false" onAction="#editHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Edit" />
+                <Button fx:id="Addbtn" layoutX="78.0" layoutY="298.0" mnemonicParsing="false" onAction="#addHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Add" />
+                <Button fx:id="Removebtn" layoutX="73.0" layoutY="356.0" mnemonicParsing="false" onAction="#RemoveHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Remove" />
+            </children>
+        </AnchorPane>
+
+        <!-- TableView for Attendance -->
+        <TableView fx:id="attendanceTable" layoutX="220.0" prefHeight="370.0" prefWidth="816.0">
+            <columns>
+                <TableColumn fx:id="ResultidColumn" prefWidth="101.60003662109375" text="Result id" />
+                <TableColumn fx:id="AssignmentidColumn" prefWidth="90.39997863769531" text="Assignment id" />
+                <TableColumn fx:id="Coursenamecolumn" prefWidth="96.00003051757812" text="Course Name" />
+                <TableColumn fx:id="StudentNameColumn" prefWidth="104.0" text="Student Name" />
+                <TableColumn fx:id="MarksObtainedcolumn" prefWidth="112.0" text="Marks Obtained" />
+                <TableColumn fx:id="totalmarkscolumn" prefWidth="103.199951171875" text="Total Marks" />
+                <TableColumn fx:id="gradecolumn" prefWidth="106.39996337890625" text="Grade" />
+            <TableColumn fx:id="gradeatcolumn" prefWidth="106.39996337890625" text="Grade at" />
+            </columns>
+        </TableView>
+
+        <Text layoutX="244.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Student name :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="teachername_Combo" layoutX="425.0" layoutY="403.0" prefWidth="150.0" promptText="Name" />
+        <Text layoutX="243.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Assignment id :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="239.0" layoutY="553.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Marks Obtained :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="examid_Combo" layoutX="425.0" layoutY="462.0" prefWidth="150.0" promptText="id" />
+        <TextField fx:id="markob_field" layoutX="425.0" layoutY="533.0" promptText="Marks" />
+    </children>
+</AnchorPane>

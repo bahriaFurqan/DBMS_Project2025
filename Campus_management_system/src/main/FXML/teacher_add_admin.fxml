@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="653.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="task.dbms_project.teacher_add_adminController">
+    <children>
+        <AnchorPane layoutY="3.0" prefHeight="649.0" prefWidth="218.0" style="-fx-background-color: #227f9a;">
+            <children>
+                <Button fx:id="backbtn" layoutX="74.0" layoutY="460.0" mnemonicParsing="false" onAction="#back_handler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Back" />
+
+                <Line endX="100.0" layoutX="111.0" layoutY="212.0" startX="-100.0" />
+                <Label layoutX="15.0" layoutY="179.0" text="Functionality" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="Add_btn" layoutX="74.0" layoutY="250.0" mnemonicParsing="false" onAction="#Add_handler" prefHeight="26.0" prefWidth="69.0" style="-fx-background-radius: 10;" text="Add" />
+                <Button fx:id="Removebtn" layoutX="74.0" layoutY="320.0" mnemonicParsing="false" onAction="#Remove_handler" prefHeight="26.0" prefWidth="69.0" style="-fx-background-radius: 10;" text="Remove" />
+                <Button fx:id="Editbtn" layoutX="74.0" layoutY="390.0" mnemonicParsing="false" onAction="#Edit_handler" prefHeight="26.0" prefWidth="69.0" style="-fx-background-radius: 10;" text="Edit" />
+                <Text layoutX="51.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Teacher" wrappingWidth="119.78631591796875">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+        <TableView fx:id="tableViewdoctors" layoutX="218.0" layoutY="3.0" prefHeight="327.0" prefWidth="824.0">
+            <columns>
+                <TableColumn fx:id="id_Column" minWidth="1.60003662109375" prefWidth="71.99998474121094" text="Teacher id" />
+                <TableColumn fx:id="Username_Column" prefWidth="120.79998779296875" text="Username" />
+                <TableColumn fx:id="name_Column" minWidth="1.60003662109375" prefWidth="111.20001220703125" text="Full Name" />
+                <TableColumn fx:id="ContactNo_Column" minWidth="1.60003662109375" prefWidth="117.5999755859375" text="Contactno." />
+                <TableColumn fx:id="Email_Column" minWidth="1.60003662109375" prefWidth="122.4000244140625" text="Email" />
+                <TableColumn fx:id="DOB_Column" minWidth="1.60003662109375" prefWidth="123.199951171875" text="DOB" />
+                <TableColumn fx:id="Password_Column" minWidth="1.60003662109375" prefWidth="155.199951171875" text="Password" />
+
+            </columns>
+        </TableView>
+        <TextField fx:id="Student_username" layoutX="425.0" layoutY="419.0" promptText="Username" />
+        <TextField fx:id="Student_fullname_filed" layoutX="425.0" layoutY="369.0" promptText="Name" />
+        <TextField fx:id="Student_Contact" layoutX="425.0" layoutY="468.0" promptText="ContactNo" />
+        <TextField fx:id="Student_Email" layoutX="425.0" layoutY="517.0" promptText="Email" />
+        <TextField fx:id="Student_password" layoutX="425.0" layoutY="562.0" promptText="Password" />
+        <Text layoutX="276.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Full Name :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="276.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Username :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="273.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter ContactNo :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="313.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Email :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="283.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Password :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="704.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select DOB :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <DatePicker fx:id="DOB_field" layoutX="814.0" layoutY="371.0" />
+    </children>
+</AnchorPane>
