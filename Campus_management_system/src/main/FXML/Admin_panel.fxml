@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="869.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="task.dbms_project.Admin_panel_controller">
+    <children>
+        <AnchorPane layoutY="30.0" prefHeight="665.0" prefWidth="218.0" style="-fx-background-color: #227f9a;">
+            <children>
+                <Label layoutX="37.0" layoutY="110.0" text="Admin Id:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="34.0" layoutY="141.0" text="Username:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="adminid_label" layoutX="109.0" layoutY="110.0" text="1">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="label_name" layoutX="109.0" layoutY="141.0" text="Furqan">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Line endX="100.0" layoutX="113.0" layoutY="179.0" startX="-100.0" />
+                <Button fx:id="Student_button" layoutX="44.0" layoutY="210.0" mnemonicParsing="false" onAction="#Student_handler" prefHeight="26.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="Student" />
+                <Button fx:id="Teacher_button" layoutX="44.0" layoutY="251.0" mnemonicParsing="false" onAction="#Teacher_handler" prefHeight="26.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="Teacher" />
+                <Button fx:id="Courses_button" layoutX="44.0" layoutY="292.0" mnemonicParsing="false" onAction="#Courses_button_handler" prefHeight="26.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="Courses" />
+                <Label layoutX="24.0" layoutY="186.0" text="Features" />
+                <Line endX="100.0" layoutX="111.0" layoutY="533.0" startX="-100.0" />
+                <Button fx:id="View_profile" layoutX="40.0" layoutY="546.0" mnemonicParsing="false" onAction="#View_Profile_handler" prefHeight="26.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="Profile" />
+                <Button fx:id="Exam_button" layoutX="44.0" layoutY="333.0" mnemonicParsing="false" onAction="#Exam_buttonhandler" prefHeight="26.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="Exam" />
+                <Button fx:id="Attendance_button" layoutX="44.0" layoutY="374.0" mnemonicParsing="false" onAction="#Attendance_buttonhandler" prefHeight="26.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="Attendance" />
+                <Button fx:id="logout" layoutX="71.0" layoutY="583.0" mnemonicParsing="false" onAction="#logouthandler" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 10;" text="Log Out" />
+                <Text layoutX="30.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Panel">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Text>
+            <Button fx:id="Registration_req_button" layoutX="44.0" layoutY="412.0" mnemonicParsing="false" onAction="#Registration_req_button_handler" prefHeight="26.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="Registration Req" />
+            <Button fx:id="EnrollStudent_button1" layoutX="44.0" layoutY="450.0" mnemonicParsing="false" onAction="#EnrollStudent_button_handler" prefHeight="26.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="Enroll Student" />
+            <Button fx:id="Timetable_button" layoutX="44.0" layoutY="484.0" mnemonicParsing="false" onAction="#Timetable_button_handler" prefHeight="26.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="Time Table" />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="-1.0" layoutY="-5.0" prefHeight="37.0" prefWidth="870.0" style="-fx-border-color: grey;">
+            <children>
+                <AnchorPane prefHeight="36.0" prefWidth="218.0" style="-fx-background-color: #227f9a;">
+                    <children>
+                        <Label layoutX="25.0" layoutY="8.0" prefHeight="20.0" prefWidth="189.0" text="Bahria University">
+                            <font>
+                                <Font size="16.0" />
+                            </font></Label>
+                    </children>
+                </AnchorPane>
+                <Label layoutX="790.0" layoutY="9.0" text="Active" />
+                <Circle fill="DODGERBLUE" layoutX="775.0" layoutY="19.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="#0fd10f" layoutX="828.0" layoutY="19.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Label layoutX="611.0" layoutY="10.0" text="Welcome" />
+                <Label fx:id="label_name2" layoutX="678.0" layoutY="10.0" text="Furqan" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="View_profile_anchor" layoutX="240.0" layoutY="60.0" prefHeight="606.0" prefWidth="614.0" style="-fx-border-color: none; -fx-background-color: #e7e7e7; -fx-border-width: 5; -fx-background-radius: 20;">
+            <children>
+                <Text layoutX="184.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Id :">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text fx:id="VIew_profile_Adminid" layoutX="301.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="32.799999999999955">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text layoutX="174.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username :">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text layoutX="211.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text layoutX="139.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Address :">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text fx:id="VIew_profile_username" layoutX="285.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NONE" wrappingWidth="159.2">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text fx:id="VIew_profile_Name" layoutX="291.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="None" wrappingWidth="159.19999999999982">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text fx:id="VIew_profile_email" layoutX="285.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NONE" wrappingWidth="292.9999999999999">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text layoutX="195.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact :">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text fx:id="VIew_profile_contact" layoutX="285.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.9999999999999">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text layoutX="47.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile" wrappingWidth="65.60000000000002">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Line endX="-100.0" endY="32.79999542236328" layoutX="137.0" layoutY="23.0" startX="-100.0" stroke="#1b1818" style="-fx-stroke-width: 3;" />
+
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="welcome_profile_anchor" layoutX="240.0" layoutY="60.0" prefHeight="606.0" prefWidth="614.0" style="-fx-border-color: none; -fx-background-color: #e7e7e7; -fx-border-width: 5; -fx-background-radius: 20;" visible="false">
+            <children>
+                <Text fx:id="VIew_profile_contact1" layoutX="285.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.9999999999999">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Text fill="#227f9a" layoutX="242.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="159.19999999999982">
+                    <font>
+                        <Font name="System Bold" size="35.0" />
+                    </font>
+                </Text>
+                <Text fill="#227f9a" layoutX="299.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" wrappingWidth="46.400000000000034">
+                    <font>
+                        <Font name="System Bold" size="35.0" />
+                    </font>
+                </Text>
+                <Text fill="#227f9a" layoutX="108.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quaid-e-Azam Hospital" wrappingWidth="398.40000000000003">
+                    <font>
+                        <Font name="System Bold" size="35.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
