@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="653.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="task.dbms_project.AttendanceStudentController">
+    <children>
+        <!-- Sidebar -->
+        <AnchorPane layoutY="3.0" prefHeight="649.0" prefWidth="218.0" style="-fx-background-color: #227f9a;">
+            <children>
+                <Button fx:id="backbtn" layoutX="73.0" layoutY="503.0" mnemonicParsing="false" onAction="#back_handler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Back" />
+                <Label layoutX="15.0" layoutY="179.0" text="Functionality" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="searchbtn" layoutX="74.0" layoutY="438.0" mnemonicParsing="false" onAction="#searchHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Search" />
+            </children>
+        </AnchorPane>
+
+        <!-- TableView for Attendance -->
+        <TableView fx:id="attendanceTable" layoutX="220.0" prefHeight="450.0" prefWidth="816.0">
+            <columns>
+                <TableColumn fx:id="AttendanceColumn" prefWidth="90.39997863769531" text="Attendace id" />
+                <TableColumn fx:id="EnrollmentidColumn" prefWidth="96.00003051757812" text="Enrollment id" />
+                <TableColumn fx:id="studentNameColumn" prefWidth="100.79998779296875" text="Student Name" />
+                <TableColumn fx:id="TimetableidColumn" prefWidth="96.00003051757812" text="Timetable id" />
+                <TableColumn fx:id="AttendacedateColumn" prefWidth="154.39996337890625" text="Attendace date" />
+                <TableColumn fx:id="statusColumn" prefWidth="127.199951171875" text="Status" />
+                <TableColumn fx:id="RemarksColumn" prefWidth="145.60003662109375" text="Remarks" />
+            </columns>
+        </TableView>
+
+        <Text layoutX="252.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Course :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="Course_Combo" layoutX="425.0" layoutY="500.0" prefWidth="150.0" promptText="Course" />
+    </children>
+</AnchorPane>

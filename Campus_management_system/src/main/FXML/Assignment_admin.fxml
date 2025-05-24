@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="653.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="task.dbms_project.AssignmentAdminController">
+    <children>
+        <!-- Sidebar -->
+        <AnchorPane layoutX="1.0" layoutY="2.0" prefHeight="649.0" prefWidth="218.0" style="-fx-background-color: #227f9a;">
+            <children>
+                <Button fx:id="backbtn" layoutX="73.0" layoutY="503.0" mnemonicParsing="false" onAction="#back_handler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Back" />
+                <Label layoutX="15.0" layoutY="179.0" text="Functionality" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="searchbtn" layoutX="74.0" layoutY="438.0" mnemonicParsing="false" onAction="#searchHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Search" />
+                <Button fx:id="editbtn" layoutX="73.0" layoutY="393.0" mnemonicParsing="false" onAction="#editHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Edit" />
+                <Button fx:id="Addbtn" layoutX="78.0" layoutY="298.0" mnemonicParsing="false" onAction="#addHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Add" />
+                <Button fx:id="Removebtn" layoutX="73.0" layoutY="356.0" mnemonicParsing="false" onAction="#RemoveHandler" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 10;" text="Remove" />
+                <Button fx:id="markresultbtn" layoutX="78.0" layoutY="252.0" mnemonicParsing="false" onAction="#markresulthandler" prefHeight="26.0" prefWidth="83.0" style="-fx-background-radius: 10;" text="Mark Result" />
+            </children>
+        </AnchorPane>
+
+        <!-- TableView for Attendance -->
+        <TableView fx:id="attendanceTable" layoutX="220.0" prefHeight="370.0" prefWidth="816.0">
+            <columns>
+                <TableColumn fx:id="AssignmentidColumn" prefWidth="90.39997863769531" text="Assignment id" />
+                <TableColumn fx:id="Coursenamecolumn" prefWidth="96.00003051757812" text="Course Name" />
+                <TableColumn fx:id="teacherNameColumn" prefWidth="104.0" text="Teacher Name" />
+                <TableColumn fx:id="Titlecolumn" prefWidth="102.39996337890625" text="Title" />
+                <TableColumn fx:id="DescriptionColumn" prefWidth="101.60003662109375" text="Description" />
+                <TableColumn fx:id="Duedatecolumn" prefWidth="112.0" text="Due date" />
+                <TableColumn fx:id="TotalMarksscolumn" prefWidth="103.199951171875" text="Total marks" />
+                <TableColumn fx:id="Createdatcolumn1" prefWidth="106.39996337890625" text="Created at" />
+            </columns>
+        </TableView>
+
+        <!-- Controls for Timetable Selection -->
+        <Text layoutX="252.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Course name :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="Courseid_Combo" layoutX="425.0" layoutY="396.0" prefWidth="150.0" promptText="Name" />
+
+        <Text layoutX="326.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Title :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="281.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Due Date :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="311.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter marks :">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <DatePicker fx:id="Examdate" layoutX="430.0" layoutY="532.0" promptText="Due date" />
+      <TextField fx:id="title_field" layoutX="426.0" layoutY="449.0" promptText="Title" />
+      <Text layoutX="271.0" layoutY="505.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Description :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="Description_field" layoutX="426.0" layoutY="486.0" promptText="Description" />
+      <TextField fx:id="Marks_field" layoutX="426.0" layoutY="576.0" promptText="Marks" />
+    </children>
+</AnchorPane>
