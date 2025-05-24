@@ -1,0 +1,210 @@
+
+CREATE DATABASE campus_management_system;
+USE campus_management_system;
+
+-- Create teachers table
+CREATE TABLE teachers (
+    teacher_id INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
+    username VARCHAR(50) NOT NULL UNIQUE, -- Unique constraint for usernames
+    password VARCHAR(255) NOT NULL, -- Password storage
+    email VARCHAR(100) NOT NULL UNIQUE, -- Unique constraint for email
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp for user creation
+);
+
+-- Create students table
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
+    username VARCHAR(50) NOT NULL UNIQUE, -- Unique constraint for usernames
+    password VARCHAR(255) NOT NULL, -- Password storage
+    email VARCHAR(100) NOT NULL UNIQUE, -- Unique constraint for email
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp for user creation
+);
+
+-- Create admins table
+CREATE TABLE admins (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
+    username VARCHAR(50) NOT NULL UNIQUE, -- Unique constraint for usernames
+    password VARCHAR(255) NOT NULL, -- Password storage
+    email VARCHAR(100) NOT NULL UNIQUE, -- Unique constraint for email
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp for user creation
+);
+
+-- Update courses table to reference teachers
+CREATE TABLE courses (
+    course_id INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
+    course_name VARCHAR(100) NOT NULL, -- Course name
+    course_code VARCHAR(20) NOT NULL UNIQUE, -- Unique constraint for course codes
+    description TEXT, -- Optional course description
+    teacher_id INT, -- Foreign Key to teachers table
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp for course creation
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id) ON DELETE SET NULL -- Referential integrity
+);
+
+-- Update students_courses table to reference students
+CREATE TABLE students_courses (
+    student_id INT NOT NULL, -- Foreign Key to students table
+    course_id INT NOT NULL, -- Foreign Key to courses table
+    enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp for enrollment
+    PRIMARY KEY (student_id, course_id), -- Composite Primary Key
+    FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE, -- Referential integrity
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE -- Referential integrity
+);
+
+
+-- Alter admins table
+ALTER TABLE admins
+ADD COLUMN full_name VARCHAR(100) NOT NULL,
+ADD COLUMN dob DATE NOT NULL,
+ADD COLUMN contact VARCHAR(15) NOT NULL;
+
+-- Alter teachers table
+ALTER TABLE teachers
+ADD COLUMN full_name VARCHAR(100) NOT NULL,
+ADD COLUMN dob DATE NOT NULL,
+ADD COLUMN contact VARCHAR(15) NOT NULL;
+
+-- Alter students table
+ALTER TABLE students
+ADD COLUMN full_name VARCHAR(100) NOT NULL,
+ADD COLUMN dob DATE NOT NULL,
+ADD COLUMN contact VARCHAR(15) NOT NULL;
+
+
+
+CREATE TABLE request_approval (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    dob DATE NOT NULL,
+    contact VARCHAR(15) NOT NULL,
+    role ENUM('admin', 'teacher', 'student') NOT NULL,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE request_approval
+ADD COLUMN password VARCHAR(255) NOT NULL;
+
+
+
+-- Alter the students table to add department_id and semester columns
+ALTER TABLE students
+ADD COLUMN department_id INT NOT NULL,
+ADD COLUMN semester INT NOT NULL;
+
+-- Create the departments table
+CREATE TABLE departments (
+    department_id INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
+    department_name VARCHAR(100) NOT NULL UNIQUE -- Unique department name
+);
+
+-- Add a foreign key constraint to link students.department_id with departments.department_id
+ALTER TABLE students
+ADD CONSTRAINT fk_department
+FOREIGN KEY (department_id) REFERENCES departments(department_id);
+
+
+
+-- Create attendance table
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY, -- Unique identifier for each attendance record
+    enrollment_id INT NOT NULL, -- References the enrollment (student-course pair)
+    timetable_id INT NOT NULL, -- References the timetable entry (class session)
+    attendance_date DATE NOT NULL, -- Date of the class session
+    status ENUM('PRESENT', 'ABSENT', 'LATE', 'EXCUSED') NOT NULL DEFAULT 'ABSENT', -- Attendance status
+    remarks VARCHAR(255), -- Optional remarks for the attendance
+    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp when attendance was recorded
+    FOREIGN KEY (enrollment_id) REFERENCES enrollments(enrollment_id) ON DELETE CASCADE, -- Links to enrollments table
+    FOREIGN KEY (timetable_id) REFERENCES timetable(timetable_id) ON DELETE CASCADE, -- Links to timetable table
+    CONSTRAINT unique_attendance UNIQUE (enrollment_id, timetable_id, attendance_date) -- Ensures one attendance record per student per class session
+) ENGINE=InnoDB;
+
+
+
+DROP TABLE IF EXISTS students_courses;
+USE campus_management_system;
+SHOW TABLES;
+CREATE TABLE enrollments (
+    enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT NOT NULL,
+    course_id INT NOT NULL,
+    enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(20) DEFAULT 'ENROLLED',
+    CONSTRAINT fk_student_enrollment FOREIGN KEY (student_id) 
+        REFERENCES students(student_id) ON DELETE CASCADE,
+    CONSTRAINT fk_course_enrollment FOREIGN KEY (course_id) 
+        REFERENCES courses(course_id) ON DELETE CASCADE,
+    CONSTRAINT unique_enrollment UNIQUE (student_id, course_id)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE timetable (
+    timetable_id INT AUTO_INCREMENT PRIMARY KEY, -- Unique identifier for each timetable entry
+    course_id INT NOT NULL, -- References the course
+    teacher_id INT NOT NULL, -- References the teacher
+    day_of_week ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NOT NULL, -- Day of the week
+    start_time TIME NOT NULL, -- Start time of the class
+    end_time TIME NOT NULL, -- End time of the class
+    location VARCHAR(100) NOT NULL, -- Location of the class
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE, -- Foreign key to courses table
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id) ON DELETE CASCADE -- Foreign key to teachers table
+) ENGINE=InnoDB;
+
+
+-- Drop the existing exams table if it exists
+DROP TABLE IF EXISTS exams_results;
+
+-- Create the updated exams table
+CREATE TABLE exams (
+    exam_id INT AUTO_INCREMENT PRIMARY KEY, -- Unique identifier for each exam
+    course_id INT NOT NULL, -- References the course
+    teacher_id INT NOT NULL, -- References the teacher
+    exam_type ENUM('Midterm', 'Final', 'Quiz', 'Assignment') NOT NULL, -- Type of the exam
+    exam_date DATE NOT NULL, -- Date of the exam
+    start_time TIME NOT NULL, -- Start time of the exam
+    duration INT NOT NULL, -- Duration of the exam in minutes
+    location VARCHAR(100) NOT NULL, -- Location of the exam
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp for exam creation
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE, -- Foreign key to courses table
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id) ON DELETE CASCADE -- Foreign key to teachers table
+) ENGINE=InnoDB;
+
+CREATE TABLE exam_results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY, -- Unique identifier for each result
+    student_id INT NOT NULL, -- References the student
+    course_id INT NOT NULL, -- References the course
+    exam_id INT NOT NULL, -- References the exam
+    exam_type ENUM('Midterm', 'Final', 'Quiz', 'Assignment') NOT NULL, -- Type of the exam
+    marks_obtained DECIMAL(5, 2) NOT NULL, -- Marks obtained by the student
+    total_marks DECIMAL(5, 2) NOT NULL, -- Total marks for the exam
+    grade VARCHAR(5), -- Grade for the exam
+    result_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp for result entry
+    FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE, -- Links to students table
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE, -- Links to courses table
+    FOREIGN KEY (exam_id) REFERENCES exams(exam_id) ON DELETE CASCADE -- Links to exams table
+) ENGINE=InnoDB;
+
+
+CREATE TABLE assignments (
+    assignment_id INT AUTO_INCREMENT PRIMARY KEY, 
+    course_id INT NOT NULL,
+    teacher_id INT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    due_date DATE NOT NULL,
+    total_marks DECIMAL(5, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE,
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE assignment_results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    assignment_id INT NOT NULL,
+    student_id INT NOT NULL,
+    marks_obtained DECIMAL(5, 2) DEFAULT NULL,
+    grade ENUM('PASS', 'FAIL') DEFAULT NULL,
+    graded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (assignment_id) REFERENCES assignments(assignment_id) ON DELETE CASCADE,
+    FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE,
+    CONSTRAINT unique_result UNIQUE (assignment_id, student_id)
+) ENGINE=InnoDB;
